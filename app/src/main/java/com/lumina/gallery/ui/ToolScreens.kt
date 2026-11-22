@@ -1,6 +1,5 @@
 package com.lumina.gallery.ui
 
-import kotlin.math.roundToInt
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -337,7 +336,7 @@ fun CleanScreen(
                     items(candidates, key = { it.id }) { asset ->
                         var dismissed by remember { mutableStateOf(false) }
                         var dragOffset by remember { mutableFloatStateOf(0f) }
-                        if (!dismissed) Row(Modifier.fillMaxWidth().offset { IntOffset(dragOffset.roundToInt(), 0) }
+                        if (!dismissed) Row(Modifier.fillMaxWidth().offset { IntOffset(dragOffset.toInt(), 0) }
                             .pointerInput(asset.id) {
                                 detectHorizontalDragGestures(
                                     onHorizontalDrag = { _, amount -> dragOffset = (dragOffset + amount).coerceIn(-size.width.toFloat(), 0f) },

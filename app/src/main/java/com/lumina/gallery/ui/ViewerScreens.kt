@@ -55,7 +55,6 @@ import com.lumina.gallery.data.FileActions
 import com.lumina.gallery.data.MediaAsset
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import kotlin.math.roundToInt
 
 private val ViewerBg = Color(0xFF050506)
 private val ViewerPanel = Color(0xFF14131A)
@@ -171,7 +170,7 @@ fun PhotoViewerScreen(
                     Text("PDF page preview is not included in this build.", color = Color(0xFF9B96A8), fontSize = 11.sp)
                 }
             }
-            Text("${(scale * 100).roundToInt()}%", color = Color.White.copy(alpha = 0.75f), modifier = Modifier.align(Alignment.BottomEnd).padding(12.dp), fontSize = 10.sp)
+            Text("${(scale * 100).toInt()}%", color = Color.White.copy(alpha = 0.75f), modifier = Modifier.align(Alignment.BottomEnd).padding(12.dp), fontSize = 10.sp)
         }
         if (!qrValue.isNullOrBlank()) {
             Row(Modifier.fillMaxWidth().background(Color(0xFF211B2B)).padding(horizontal = 12.dp, vertical = 7.dp), verticalAlignment = Alignment.CenterVertically) {
