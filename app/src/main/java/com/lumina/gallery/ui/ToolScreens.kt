@@ -1,5 +1,7 @@
 package com.lumina.gallery.ui
 
+import kotlin.math.roundToInt
+
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
