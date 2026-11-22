@@ -58,10 +58,22 @@ jobs:
           cache-provider: basic
           validate-wrappers: false
 
-      # 6. Build Release APK
+      
       - name: Build Release APK
+        shell: bash
         run: |
-          gradle --no-daemon --stacktrace :app:assembleRelease
+          set -o pipefail
+          gradle --no-daemon --stacktrace --info :app:assembleRelease 2>&1 | tee gradle-build.log
+
+      - name: Upload Gradle Diagnostic Log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: LuminaGallery-Gradle-Diagnostic-Log
+          path: gradle-build.log
+          if-no-files-found: warn
+          retention-days: 7
+
 
       # 7. Locate and prepare APK
       - name: Prepare APK Artifact
